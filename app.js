@@ -55,10 +55,11 @@ var routes = require('./routes/index')(accounts)
 i18n.configure({
     defaultLocale: config.defaultLocale,
     directory: __dirname + '/locales',
+    qyeryParameter: 'lang',
     autoReload: true
 });
 
-i18n.setLocale(config.defaultLocale);
+// i18n.setLocale(config.defaultLocale);
 
 // default: using 'accept-language' header to guess language settings
 app.use(i18n.init);

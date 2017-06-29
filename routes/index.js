@@ -12,19 +12,57 @@ var express = require('express')
 module.exports = function(accounts) {
   var router        = express.Router()
     , currentLocale = config.defaultLocale || 'en'
+    , locales       = [
+      {code: "en", name: "English"},
+      {code: "cs", name: "Czech"},
+      {code: "de", name: "German"},
+      {code: "es", name: "Spanish"},
+      {code: "fr", name: "French"},
+      {code: "it", name: "Italian"},
+      {code: "ja", name: "Japanese"},
+      {code: "ko", name: "Korean"},
+      {code: "pl", name: "Polish"},
+      {code: "pt-BR", name: "Portuguese-BR"},
+      {code: "pt", name: "Portuguese"},
+      {code: "ru", name: "Russian"},
+      {code: "tr", name: "Turkish"},
+      {code: "zh-CN", name: "Cantonese"},
+      {code: "zh-TW", name: "Taiwanese"},
+    ]
     ;
 
-  // HTTP GET / : Handle serving the index view based on the currentLocale
+  ////////////////////////////////////////////////////////////////////
+  // HTTP GET / : Handle serving the index view based on the
+  //              currentLocale.
   router.get('/', function(req, res) {
     res.setLocale(currentLocale);
     res.render('index', {
       title: config.title,
       accounts: accounts,
+      locales: locales,
+      currentLocale: currentLocale,
       tokenRequired: !!config.inviteToken
     });
   });
 
-  // HTTP POST /invite : Payload {email: <string, required>, community: <string, required>}
+  ////////////////////////////////////////////////////////////////////
+  // HTTP GET/lang/:lang : Handle serving a locale based view of the
+  //                       index page. If the lang parameter is
+  //                       nonsense, the default lang is used.
+  router.get('/lang/:lang', function(req, res) {
+    res.setLocale(req.params.lang);
+    res.render('index', {
+      title: config.title,
+      accounts: accounts,
+      locales: locales,
+      currentLocale: req.params.lang,
+      tokenRequired: !!config.inviteToken
+    });
+  });
+
+  ////////////////////////////////////////////////////////////////////
+  // HTTP POST /invite
+  //    Payload {email: <string, required>, community: <string, required>}
   router.post('/invite', function(req, res) {
     // Check to see that a valid community has been set for this request, if the accounts
     // only include one type, then automatically insert the community into the request.
@@ -125,6 +163,8 @@ module.exports = function(accounts) {
       });
     }
   });
+
+  ////////////////////////////////////////////////////////////////////
 
   return router;
 }
