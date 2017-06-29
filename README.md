@@ -21,8 +21,8 @@ You can set variables for your own purpose in `config.js` or environment variabl
 Fill out `config.js` as your infomation.
 
 * `community`: your community or team name to display on join page.
-* `slackUrl` : your slack team url (ex.: socketio.slack.com)
-* `slacktoken` : Your access token for Slack. (see [Issue token](#issue-token))
+* `slackURL` : your slack team url (ex.: socketio.slack.com)
+* `slackToken` : Your access token for Slack. (see [Issue token](#issue-token))
 * `inviteToken`: An optional security measure - if it is set, then that token will be required to get invited.
 * `locale`: Application language (currently `cs`, `de`, `en`, `es`, `fr`, `it`,  `ja`, `ko`, `pl`, `pt`, `pt-BR`, `tr`, `zh-CN` and `zh-TW` available).
 

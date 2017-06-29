@@ -1,0 +1,7 @@
+- community: 'YOUR-TEAM-NAME-01'
+  slackURL: 'YOUR-TEAM-01.slack.com'
+  slackToken: 'SLACKACCESSTOKEN01'
+
+- community: 'YOUR-TEAM-NAME-02'
+  slackURL: 'YOUR-TEAM-02.slack.com'
+  slackToken: 'SLACKACCESSTOKEN02'
