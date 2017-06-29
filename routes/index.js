@@ -2,6 +2,7 @@
 
 var express = require('express')
   , request = require('request')
+  , _       = require('underscore')._
   , util    = require('util')
   , config  = require('../config')
   ;
@@ -25,13 +26,39 @@ module.exports = function(accounts) {
 
   // HTTP POST /invite : Payload {email: <string, required>, community: <string, required>}
   router.post('/invite', function(req, res) {
-    console.log(util.inspect(req.body));
+    // Check to see that a valid community has been set for this request, if the accounts
+    // only include one type, then automatically insert the community into the request.
+    if (req.body.community && req.body.community == "") {
+      if (accounts.length == 1) {
+        req.body.community = accounts[0].community;
+      } else {
+        res.render('result', {
+          community: "MISSING",
+          message: "Failed invitation due to unspecified community!<br>",
+        });
+        return;
+      }
+    }
+
     if (req.body.email && (!config.inviteToken || (!!config.inviteToken && req.body.token === config.inviteToken))) {
+      // Grab the community from the accounts list, if we don't find a match,
+      // we bail out!
+      var account = _.find(accounts, function(account, idx) {
+        return (account.community == req.body.community);
+      });
+      if (!account) {
+        res.render('result', {
+          community: req.body.community,
+          message: "is not a invite-able community!<br>",
+        });
+        return;
+      }
+
       request.post({
-          url: 'https://'+ config.slackURL + '/api/users.admin.invite',
+          url: 'https://'+ account.slackURL + '/api/users.admin.invite',
           form: {
             email: req.body.email,
-            token: config.slackToken,
+            token: account.slackToken,
             set_active: true
           }
         }, function(err, httpResponse, body) {
@@ -43,16 +70,16 @@ module.exports = function(accounts) {
           body = JSON.parse(body);
           if (body.ok) {
             res.render('result', {
-              community: config.community,
+              community: account.community,
               message: 'Success! Check &ldquo;'+ req.body.email +'&rdquo; for an invite from Slack.'
             });
           } else {
             var error = body.error;
             if (error === 'already_invited' || error === 'already_in_team') {
               res.render('result', {
-                community: config.community,
+                community: account.community,
                 message: 'Success! You were already invited.<br>' +
-                         'Visit <a href="https://'+ config.slackURL +'">'+ config.community +'</a>'
+                         'Visit <a href="https://'+ account.slackURL +'">'+ account.community +'</a>'
               });
               return;
             } else if (error === 'invalid_email') {
@@ -62,7 +89,7 @@ module.exports = function(accounts) {
             }
 
             res.render('result', {
-              community: config.community,
+              community: account.community,
               message: 'Failed! ' + error,
               isFailed: true
             });
@@ -70,26 +97,29 @@ module.exports = function(accounts) {
         });
     } else {
       var errMsg = [];
+      // Email validation
       if (!req.body.email) {
         errMsg.push('your email is required');
       }
 
+      // Invite token validation
       if (!!config.inviteToken) {
         if (!req.body.token) {
           errMsg.push('valid token is required');
         }
-
         if (req.body.token && req.body.token !== config.inviteToken) {
           errMsg.push('the token you entered is wrong');
         }
       }
 
+      // Community validation
       if (accounts.length > 1 && !req.body.community) {
         errMsg.push('no community specified!');
       }
 
+      // Tell the client what's wrong
       res.render('result', {
-        community: config.community,
+        community: account.community,
         message: 'Failed! ' + errMsg.join(' and ') + '.',
         isFailed: true
       });

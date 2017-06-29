@@ -14,7 +14,6 @@ html
             h2 Please select a community
           else
             h2 #{__('TITLE', accounts[0].community)}
-
         .content
           .information
             form(method="POST", action="/invite")#join-form.form
@@ -22,7 +21,6 @@ html
                 select(name="community")
                   each account, i in accounts
                     option(value=account.community)  #{account.community}
-
               input(type="email", name="email", autofocus, placeholder="#{__('ENTER_EMAIL')}")#slack-email.field
               if tokenRequired
                 input(type="text", name="token", placeholder="#{__('ENTER_TOKEN')}")#slack-token.field
