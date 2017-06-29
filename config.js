@@ -4,9 +4,6 @@ module.exports = {
   // default will be English (en).
   defaultLocale: process.env.LOCALE || "en",
 
-  // Set the title for the home page by overriding this value.
-  title: process.env.TITLE || "Join YOUR-TEAM-NAME slack!",
-
   // an optional security measure - if it is set, then that token will be required to get invited.
   inviteToken: process.env.INVITE_TOKEN || null,
 

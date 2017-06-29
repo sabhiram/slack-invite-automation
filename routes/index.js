@@ -2,6 +2,7 @@
 
 var express = require('express')
   , request = require('request')
+  , util    = require('util')
   , config  = require('../config')
   ;
 
@@ -24,6 +25,7 @@ module.exports = function(accounts) {
 
   // HTTP POST /invite : Payload {email: <string, required>, community: <string, required>}
   router.post('/invite', function(req, res) {
+    console.log(util.inspect(req.body));
     if (req.body.email && (!config.inviteToken || (!!config.inviteToken && req.body.token === config.inviteToken))) {
       request.post({
           url: 'https://'+ config.slackURL + '/api/users.admin.invite',
