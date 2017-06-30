@@ -1,11 +1,15 @@
 module.exports = {
 
-  // setup the default locale to whatever is set in the environment,
+  // Setup the default locale to whatever is set in the environment,
   // default will be English (en).
   defaultLocale: process.env.LOCALE || "en",
 
-  // an optional security measure - if it is set, then that token will be required to get invited.
+  // An optional security measure - if it is set, then that token will be required to get invited.
   inviteToken: process.env.INVITE_TOKEN || null,
+
+  // This file is passed to the rendering engine to override the styling
+  // of the page. Look at `public/css` for more.
+  styleOverride: process.env.STYLE_OVERRIDE || "/css/style.css",
 
   //////////////////////////////////////////////////////////////////////
 
@@ -20,13 +24,13 @@ module.exports = {
 
   // Or ...
 
-  // your community or team name to display on join page.
+  // Your community or team name to display on join page.
   community: process.env.COMMUNITY_NAME || 'YOUR-TEAM-NAME',
 
-  // your slack team url (ex: socketio.slack.com)
+  // Your slack team url (ex: socketio.slack.com)
   slackURL: process.env.SLACK_URL || 'YOUR-TEAM.slack.com',
 
-  // access token of slack
+  // Access token of slack
   // You can generate it in https://api.slack.com/web#auth
   // You should generate the token in admin user, not owner.
   // If you generate the token in owner user, missing_scope error will be occurred.

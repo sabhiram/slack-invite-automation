@@ -7,23 +7,26 @@ html
       title #{__('SELECT_COMMUNITY')}
     else
       title #{__('TITLE', accounts[0].community)}
-    link(href="/css/style.css", rel="stylesheet", type="text/css")
+    link(href="#{style}", rel="stylesheet", type="text/css")
     link(href="//fonts.googleapis.com/css?family=Lato:300,400,700,900,700italic|Open+Sans:700italic,400,600,300,700,800", rel="stylesheet", type="text/css")
   body
     #wrapper
       .main
-        select(name="locale" id="locale-selector")
-          each loc, i in locales
-            if currentLocale == loc.code
-              option(value=loc.code selected) #{loc.name}
-            else
-              option(value=loc.code) #{loc.name}
         .header
+          img(src="/images/slack_icon.png")
+          .logo
+
+        .content
+          select(name="locale" id="locale-selector")
+            each loc, i in locales
+              if currentLocale == loc.code
+                option(value=loc.code selected) #{loc.name}
+              else
+                option(value=loc.code) #{loc.name}
           if accounts.length > 1
             h2 #{__('SELECT_COMMUNITY')}
           else
             h2 #{__('TITLE', accounts[0].community)}
-        .content
           .information
             form(method="POST", action="/invite")#join-form.form
               if accounts.length > 1

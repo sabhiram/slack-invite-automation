@@ -37,6 +37,7 @@ module.exports = function(accounts) {
   router.get('/', function(req, res) {
     res.setLocale(currentLocale);
     res.render('index', {
+      style: config.styleOverride,
       title: config.title,
       accounts: accounts,
       locales: locales,
@@ -52,6 +53,7 @@ module.exports = function(accounts) {
   router.get('/lang/:lang', function(req, res) {
     res.setLocale(req.params.lang);
     res.render('index', {
+      style: config.styleOverride,
       title: config.title,
       accounts: accounts,
       locales: locales,
