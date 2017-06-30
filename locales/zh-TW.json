@@ -1,6 +1,7 @@
 {
-  "HEADER": "以下請輸入您的電子郵箱加入 %s 的 Slack！",
-  "ENTER_EMAIL": "輸入您的電子郵箱地址",
-  "ENTER_TOKEN": "輸入提供予您的邀請令牌",
-  "TITLE": "加入 %s 的 Slack 社群！"
+	"HEADER": "以下請輸入您的電子郵箱加入 %s 的 Slack！",
+	"SELECT_COMMUNITY": "请选择一个社区:",
+	"ENTER_EMAIL": "輸入您的電子郵箱地址",
+	"ENTER_TOKEN": "輸入提供予您的邀請令牌",
+	"TITLE": "加入 %s 的 Slack 社群！"
 }

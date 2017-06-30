@@ -1,5 +1,6 @@
 {
   "HEADER": "Zadej e-mail a staň se členem skupiny %s na Slacku!",
+  "SELECT_COMMUNITY": "Vyberte komunitu:",
   "ENTER_EMAIL": "Zadej svůj e-mail",
   "ENTER_TOKEN": "Zadej přihlašovací kód z pozvánky",
   "TITLE": "Staň se členem skupiny %s na Slacku!"

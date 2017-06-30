@@ -1,6 +1,7 @@
 {
-  "HEADER": "Gib deine E-Mail Adresse an, um %s auf Slack beizutreten!",
-  "ENTER_EMAIL": "Deine E-Mail Adresse",
-  "ENTER_TOKEN": "Gib deinen Zugangscode an",
-  "TITLE": "Tritt %s auf Slack bei!"
+	"HEADER": "Gib deine E-Mail Adresse an, um %s auf Slack beizutreten!",
+	"SELECT_COMMUNITY": "Bitte wählen Sie eine Community aus:",
+	"ENTER_EMAIL": "Deine E-Mail Adresse",
+	"ENTER_TOKEN": "Gib deinen Zugangscode an",
+	"TITLE": "Tritt %s auf Slack bei!"
 }
