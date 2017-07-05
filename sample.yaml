@@ -1,7 +1,14 @@
-- community: 'YOUR-TEAM-NAME-01'
-  slackURL: 'YOUR-TEAM-01.slack.com'
-  slackToken: 'SLACKACCESSTOKEN01'
+- community: "YOUR-TEAM-NAME-01"
+  slackURL: "YOUR-TEAM-01.slack.com"
+  slackToken: "SLACKACCESSTOKEN01"
+  icon: "/images/flag_usa.png"
 
-- community: 'YOUR-TEAM-NAME-02'
-  slackURL: 'YOUR-TEAM-02.slack.com'
-  slackToken: 'SLACKACCESSTOKEN02'
+- community: "YOUR-TEAM-NAME-02"
+  slackURL: "YOUR-TEAM-02.slack.com"
+  slackToken: "SLACKACCESSTOKEN02"
+  icon: "/images/flag_canada.png"
+
+- community: "YOUR-TEAM-NAME-03"
+  slackURL: "YOUR-TEAM-03.slack.com"
+  slackToken: "SLACKACCESSTOKEN03"
+  icon: "/images/flag_uk.png"

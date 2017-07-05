@@ -66,6 +66,7 @@ module.exports = function(accounts) {
   // HTTP POST /invite
   //    Payload {email: <string, required>, community: <string, required>}
   router.post('/invite', function(req, res) {
+    console.log(req.body);
     // Check to see that a valid community has been set for this request, if the accounts
     // only include one type, then automatically insert the community into the request.
     if (req.body.community && req.body.community == "") {

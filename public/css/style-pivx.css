@@ -57,11 +57,63 @@ html,body{
     display: flex;
     flex-direction: row;
 }
-.lang-select .field {
+.lang-select .title {
     justify-content: flex-start;
     padding: 3px;
     margin-right: 10px;
 }
 #locale-selector {
     margin-top: 5px;
+}
+
+.community-item {
+    display: flex;
+    flex-direction: row;
+
+    max-width: 400px;
+    margin: 0 auto;
+
+    height: 60px;
+    background: #555;
+    color: white;
+
+    margin-bottom: 2px;
+}
+.community-item input {
+    justify-content: flex-start;
+    margin-right: 15px;
+    margin-top: 25px;
+    margin-left: 15px;
+}
+.community-item .community-icon {
+    height: 60px;
+}
+.community-item .community-icon img {
+    margin: 4px;
+    margin-top: 14px;
+    width: 32px;
+    height: 32px
+}
+.community-item .community-title {
+    margin-left: 15px;
+    line-height: 60px;
+}
+
+/*** Content styling ***/
+
+
+.error {
+    color: #FE7070;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+a {
+    color: #92BCF2;
+    font-weight: 700;
+}
+
+a:visited,
+a:hover {
+    color: #7EB6FF;
 }

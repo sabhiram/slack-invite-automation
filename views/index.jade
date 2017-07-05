@@ -19,7 +19,7 @@ html
 
         .content
           .lang-select
-            .field Change language:
+            .title Change language:
             select(name="locale" id="locale-selector")
               each loc, i in locales
                 if currentLocale == loc.code
@@ -33,9 +33,12 @@ html
           .information
             form(method="POST", action="/invite")#join-form.form
               if accounts.length > 1
-                select(name="community")
-                  each account, i in accounts
-                    option(value=account.community)  #{account.community}
+                each account, i in accounts
+                  .community-item
+                    input(type="radio", name="communityradio", value=account.community)
+                    .community-icon
+                      img(src="#{account.icon}")
+                    .community-title #{account.community}
               input(type="email", name="email", autofocus, placeholder="#{__('ENTER_EMAIL')}")#slack-email.field
               if tokenRequired
                 input(type="text", name="token", placeholder="#{__('ENTER_TOKEN')}")#slack-token.field
