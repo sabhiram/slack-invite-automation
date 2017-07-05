@@ -6,10 +6,11 @@ html,body{
   margin:0;
   padding:0;
   font-family: 'Open Sans', sans-serif;
-  background: #000 url(../images/bg.jpg) center top no-repeat;
+  background: #333; /*url(../images/bg.jpg) center top no-repeat;*/
   background-size: cover;
   height: 100%;
   width: 100%;
+  color: #891bb5;
 }
 
 /*** Header styling ***/
@@ -23,12 +24,19 @@ html,body{
     border-bottom: 2px solid #555;
 
 }
-.header img {
+
+.header img,
+.header .spacer {
     margin-top: 10px;
     width: 32px;
     height: 32px;
     padding: 9px;
+    justify-content: flex-start;
 }
+.header .spacer {
+  justify-content: flex-end;
+}
+
 .header .logo {
     margin-top: 10px;
     width: 100%;
@@ -39,3 +47,21 @@ html,body{
 
 /*** Content styling ***/
 
+.content {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.lang-select {
+    display: flex;
+    flex-direction: row;
+}
+.lang-select .field {
+    justify-content: flex-start;
+    padding: 3px;
+    margin-right: 10px;
+}
+#locale-selector {
+    margin-top: 5px;
+}

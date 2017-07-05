@@ -35,13 +35,13 @@ module.exports = function(accounts) {
   // HTTP GET / : Handle serving the index view based on the
   //              currentLocale.
   router.get('/', function(req, res) {
-    res.setLocale(currentLocale);
+    res.setLocale(req.getLocale());
     res.render('index', {
       style: config.styleOverride,
       title: config.title,
       accounts: accounts,
       locales: locales,
-      currentLocale: currentLocale,
+      currentLocale: req.getLocale(),
       tokenRequired: !!config.inviteToken
     });
   });

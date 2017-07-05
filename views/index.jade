@@ -15,14 +15,17 @@ html
         .header
           img(src="/images/slack_icon.png")
           .logo
+          .spacer
 
         .content
-          select(name="locale" id="locale-selector")
-            each loc, i in locales
-              if currentLocale == loc.code
-                option(value=loc.code selected) #{loc.name}
-              else
-                option(value=loc.code) #{loc.name}
+          .lang-select
+            .field Change language:
+            select(name="locale" id="locale-selector")
+              each loc, i in locales
+                if currentLocale == loc.code
+                  option(value=loc.code selected) #{loc.name}
+                else
+                  option(value=loc.code) #{loc.name}
           if accounts.length > 1
             h2 #{__('SELECT_COMMUNITY')}
           else
