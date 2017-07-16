@@ -35,7 +35,7 @@ html
               if accounts.length > 1
                 each account, i in accounts
                   .community-item
-                    input(type="radio", name="communityradio", value=account.community)
+                    input(type="radio", name="community", value=account.community)
                     .community-icon
                       img(src="#{account.icon}")
                     .community-title #{account.community}

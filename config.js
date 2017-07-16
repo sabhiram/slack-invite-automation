@@ -11,6 +11,14 @@ module.exports = {
   // of the page. Look at `public/css` for more.
   styleOverride: process.env.STYLE_OVERRIDE || "/css/style.css",
 
+  // slackWarningList - statically set list of regular expressions that will
+  // alert the `slackWebhookURL` defined below.
+  slackWarningList: [
+    // /hackz0r/,   // Uncomment to blacklist any email with 'hackz0r' in it
+    // /1337/,      // Uncomment to blacklist any email with '1337' in it
+  ],
+  slackWebookURL: process.env.SLACK_WEBHOOK_URL || null,
+
   //////////////////////////////////////////////////////////////////////
 
   // Either ...

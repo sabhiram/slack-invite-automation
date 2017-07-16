@@ -9,6 +9,27 @@ var express = require('express')
 
 //////////////////////////////////////////////////////////////////////
 
+// Helper function to check to see if this is a blacklisted email addr
+// and notify slack accordingly.
+function handleBlacklistedEmailMaybe(email) {
+  if (config.slackWebookURL != null) {
+    for (var i = 0; i < config.slackWarningList.length; i++) {
+      if (email.match(config.slackWarningList[i])) {
+        request.post({
+          url: config.slackWebookURL,
+          method: "POST",
+          json: true,
+          body: {text: "Warning blacklisted user with email "+ email +" has signed up!\n"},
+        }, function(error, response, body) {
+        });
+        return;
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////////
+
 module.exports = function(accounts) {
   var router        = express.Router()
     , currentLocale = config.defaultLocale || 'en'
@@ -122,6 +143,11 @@ module.exports = function(accounts) {
                 message: 'Success! You were already invited.<br>' +
                          'Visit <a href="https://'+ account.slackURL +'">'+ account.community +'</a>'
               });
+
+              // Check to see if this email was one of the blacklisted ones, if so
+              // send a message to the specified slack webhook URL.
+              handleBlacklistedEmailMaybe(req.body.email);
+
               return;
             } else if (error === 'invalid_email') {
               error = 'The email you entered is an invalid email.';
