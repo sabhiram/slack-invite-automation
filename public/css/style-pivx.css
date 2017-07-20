@@ -1,28 +1,22 @@
 /*
  *  Custom style for PIVX community slack invitation tool landing page.
+ *  To load this file: npm start YAML_FILE=sample.yaml STYLE_OVERRIDE=/css/style-pivx.css
  */
-
-html,body{
-  margin:0;
-  padding:0;
-  font-family: 'Open Sans', sans-serif;
-  background: #333; /*url(../images/bg.jpg) center top no-repeat;*/
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-  color: #891bb5;
-}
+@import url('style.css');
 
 /*** Header styling ***/
-
+#wrapper,.main {
+  width:100%;
+}
 .header {
     display: flex;
     flex-direction: row;
     height: 68px;
+    margin-top:0;
+    width:100%;
     background: #000;
     color: #fff;
     border-bottom: 2px solid #555;
-
 }
 
 .header img,
@@ -31,10 +25,6 @@ html,body{
     width: 32px;
     height: 32px;
     padding: 9px;
-    justify-content: flex-start;
-}
-.header .spacer {
-  justify-content: flex-end;
 }
 
 .header .logo {
@@ -47,36 +37,17 @@ html,body{
 
 /*** Content styling ***/
 
-.content {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
+.information {
+  padding-top:0;
 }
-
-.lang-select {
-    display: flex;
-    flex-direction: row;
-}
-.lang-select .title {
-    justify-content: flex-start;
-    padding: 3px;
-    margin-right: 10px;
-}
-#locale-selector {
-    margin-top: 5px;
-}
-
 .community-item {
     display: flex;
     flex-direction: row;
-
     max-width: 400px;
     margin: 0 auto;
-
     height: 60px;
     background: #555;
     color: white;
-
     margin-bottom: 2px;
 }
 .community-item input {
@@ -99,21 +70,71 @@ html,body{
     line-height: 60px;
 }
 
-/*** Content styling ***/
-
-
-.error {
-    color: #FE7070;
-    font-weight: 700;
-    font-size: 25px;
+.input-group {
+  position:relative;
+  width:350px;
+  margin:20px auto 0 auto;
+}
+.field {
+  box-sizing:border-box;
+  width:inherit;
 }
 
-a {
-    color: #92BCF2;
-    font-weight: 700;
+#locale-selector, #slack-email{
+  /*display:flex;*/
+  /*flex-direction: row;*/
+  /*margin:0 auto;
+  margin-top: 5px;
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #222;
+  border: none;
+  height: 34px;
+  padding: 5px;
+  width: 400px;
+  color: #fff;
+  border: 1px solid #ccc;
+  font-size: 16px;*/
 }
 
-a:visited,
-a:hover {
-    color: #7EB6FF;
+.lang-select {
+  margin:0 auto;
+  width:400px;
+	 /*background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;*/
+	 /*overflow: hidden;*/
+   /*height: 34px;*/
+   /*width: 240px;*/
+	 /*background-color: #ddd;*/
+	 /*-webkit-border-radius: 20px;*/
+ 	 /*-moz-border-radius: 20px;*/
+ 	 /*border-radius: 20px;*/
+	 /*margin:0 auto 35px auto;*/
+}
+
+.lang-select label {
+  color:#fff;
+  margin-left:20px;
+}
+.lang-select select#locale-selector {
+	 /*-webkit-appearance: none;*/
+   /*-moz-appearance: none;*/
+   /*appearance: none;*/
+   /*background: transparent;*/
+   /*background: #000;*/
+   /*background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;*/
+   display:block;
+   margin:10px auto 10px auto;
+   border: none;
+   height: 34px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+	 color: #000;
+	 border: 1px solid #ccc;
+	 font-size: 16px;
+}
+
+.lang-select select::-ms-expand {
+    display: none; /* hide the default arrow in ie10 and ie11 */
 }

@@ -19,7 +19,7 @@ html
 
         .content
           .lang-select
-            .title Change language:
+            label(for="locale-selector") Change language:
             select(name="locale" id="locale-selector")
               each loc, i in locales
                 if currentLocale == loc.code
@@ -39,10 +39,11 @@ html
                     .community-icon
                       img(src="#{account.icon}")
                     .community-title #{account.community}
-              input(type="email", name="email", autofocus, placeholder="#{__('ENTER_EMAIL')}")#slack-email.field
-              if tokenRequired
-                input(type="text", name="token", placeholder="#{__('ENTER_TOKEN')}")#slack-token.field
-              input(type="submit", value="Join").submit
+              .input-group
+                input(type="email", name="email", autofocus, placeholder="#{__('ENTER_EMAIL')}")#slack-email.field
+                if tokenRequired
+                  input(type="text", name="token", placeholder="#{__('ENTER_TOKEN')}")#slack-token.field
+                input(type="submit", value="Join").submit
     script.
       var tokenRequired = #{tokenRequired};
       var locl = document.getElementById('locale-selector');
