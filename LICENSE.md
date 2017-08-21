@@ -1,4 +1,8 @@
+Original code and concept are:
 Copyright (c) 2015 "Outsider" Jeonghoon Byun
+
+All modifications to support multiple communities fall under:
+Copyright (c) 2017 "Sabhiram" Sabhiram
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

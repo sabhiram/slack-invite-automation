@@ -26,7 +26,12 @@ Fill out `config.js` as your infomation.
 * `inviteToken`: An optional security measure - if it is set, then that token will be required to get invited.
 * `locale`: Application language (currently `cs`, `de`, `en`, `es`, `fr`, `it`,  `ja`, `ko`, `pl`, `pt`, `pt-BR`, `tr`, `zh-CN` and `zh-TW` available).
 
+#### Multiple communities
+
+To setup multiple communities specify a `yamlFile` using the `YAML_FILE` environment variable. This file will override the `community`, `slackURL`, and associated tokens with a list of communities and so on. Refer to `sample.yaml` to see how this works.
+
 ### Environment Variables
+
 You can set environment variables directly or in `.env` file.
 If you want to use a `.env` file, create a file in the root called `.env` with the following key/value pairs.
 (`.env` files are added to the `.gitignore`.)
@@ -60,6 +65,7 @@ You can test your token via curl:
 Add the application settings that are defined in the environment variables above.
 
 ## Run
+
 [Node.js](http://nodejs.org/) is required.
 
 ```shell
@@ -73,7 +79,7 @@ You can access <http://localhost:3000> on your web browser.
 
 ![](https://raw.github.com/outsideris/slack-invite-automation/master/screenshots/join-page.jpg)
 
-## Run with Docker
+### Run with Docker
 
 It's easy to run this service if you have installed Docker on your system.
 
@@ -84,7 +90,8 @@ $ docker build -t slack-invite-automation .
 $ docker run -it --rm -e COMMUNITY_NAME="YOUR-TEAM-NAME" -e SLACK_URL="YOUR-TEAM.slack.com" -e SLACK_TOKEN="YOUR-ACCESS-TOKEN" -p 3000:3000 slack-invite-automation
 ```
 
-## Issue token
+## Issuing slack tokens
+
 **You should generate the token in admin user, not owner.** If you generate the token in owner user, a `missing_scope` error may occur.
 
 There are two ways to issue the access token.
