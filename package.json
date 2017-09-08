@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start-pivx": "YAML_FILE=sample.yaml STYLE_OVERRIDE=/css/style-pivx.css node ./bin/www"
+    "start-pivx": "YAML_FILE=sample.yaml STYLE_OVERRIDE=/css/style-pivx.css node ./bin/www",
+    "start-pivx-win": "set YAML_FILE=sample.yaml&&set STYLE_OVERRIDE=/css/style-pivx.css&&node ./bin/www"
   },
   "dependencies": {
     "body-parser": "^1.14.0",
@@ -14,8 +15,10 @@
     "express": "^4.13.0",
     "i18n": "^0.7.0",
     "jade": "^1.11.0",
+    "js-yaml": "^3.9.1",
     "morgan": "^1.6.0",
     "request": "^2.62.0",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "underscore": "^1.8.3"
   }
 }
