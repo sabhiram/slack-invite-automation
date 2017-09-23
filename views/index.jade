@@ -15,9 +15,6 @@ html
         .header
           img(src="/images/slack_icon.png")
           .logo
-          .spacer
-
-        .content
           .lang-select
             label(for="locale-selector") Change language:
             select(name="locale" id="locale-selector")
@@ -26,14 +23,19 @@ html
                   option(value=loc.code selected) #{loc.name}
                 else
                   option(value=loc.code) #{loc.name}
+
+        .content
+          
           if accounts.length > 1
             h2 #{__('SELECT_COMMUNITY')}
           else
             h2 #{__('TITLE', accounts[0].community)}
           .information
             form(method="POST", action="/invite")#join-form.form
+             .details
               if accounts.length > 1
                 each account, i in accounts
+                 label
                   .community-item
                     input(type="radio", name="community", value=account.community)
                     .community-icon
@@ -43,7 +45,7 @@ html
                 input(type="email", name="email", autofocus, placeholder="#{__('ENTER_EMAIL')}")#slack-email.field
                 if tokenRequired
                   input(type="text", name="token", placeholder="#{__('ENTER_TOKEN')}")#slack-token.field
-                input(type="submit", value="Join").submit
+             input(type="submit", value="Join").submit
     script.
       var tokenRequired = #{tokenRequired};
       var locl = document.getElementById('locale-selector');
@@ -61,3 +63,7 @@ html
       locl.onchange = function(evt) {
         window.location.href = "/lang/" + locl.options[locl.selectedIndex].value;
       };
+    
+        document.getElementsByClassName('community-item')[0]
+        .addEventListener('click', function (event) {alert(1) });
+        

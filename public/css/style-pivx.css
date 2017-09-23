@@ -28,17 +28,39 @@
 }
 
 .header .logo {
-    margin-top: 10px;
-    width: 100%;
+        top: 10px;
     height: 50px;
+    width: 200px;
+    margin: auto;
     background: url(../images/pivx_header.png) center no-repeat;
     background-size: contain;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 /*** Content styling ***/
+h2 {color:black;    font-size: 25px;}
+
+.form {padding-bottom: 10px;width:520px;}
+
+.content{
+    max-width: 650px;
+  width: 100%;
+  margin: auto;    
+     background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+		box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 20%;
+}
 
 .information {
   padding-top:0;
+    
 }
 .community-item {
     display: flex;
@@ -46,15 +68,15 @@
     max-width: 400px;
     margin: 0 auto;
     height: 60px;
-    background: #555;
-    color: white;
-    margin-bottom: 2px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.active {
+    background: rgba(86, 184, 86, 0.18);
 }
 .community-item input {
-    justify-content: flex-start;
-    margin-right: 15px;
-    margin-top: 25px;
-    margin-left: 15px;
+display:none;
 }
 .community-item .community-icon {
     height: 60px;
@@ -62,25 +84,54 @@
 .community-item .community-icon img {
     margin: 4px;
     margin-top: 14px;
-    width: 32px;
-    height: 32px
+    width: 36px;
+    height: 36px
 }
 .community-item .community-title {
     margin-left: 15px;
     line-height: 60px;
+    padding-top: 1px;
 }
 
 .input-group {
   position:relative;
-  width:350px;
-  margin:20px auto 0 auto;
-}
+  /*width:350px;
+margin: 20px auto 0 40px;*/
+    width:330px;
+margin:40px auto 0 0;}
+
+/*
 .field {
   box-sizing:border-box;
   width:inherit;
+width: 360px;
+		background: #fff;
+		color: #a3a3a3;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;}
+*/
+
+.field{  
+    display: block;
+    width: 100%;
+    background: rgba(103, 90, 90, 0.13);
+    color: rgba(66, 35, 100, 0.19);
+    padding: 10px 12px;
+    border-radius: 3px;
+    border: solid 1px;
+    border-color: transparent;
+    transition: all 0.3s ease-in;
+    
+}
+	.field:focus {
+	border: 1px solid #5c4c7c;
+    padding: 10px 12px;
+    color: #5c4c7c;
 }
 
-#locale-selector, #slack-email{
+#locale-selector{
   /*display:flex;*/
   /*flex-direction: row;*/
   /*margin:0 auto;
@@ -99,10 +150,16 @@
   font-size: 16px;*/
 }
 
+
+
+
 .lang-select {
-  margin:0 auto;
+    margin-right: 0;
+    padding-top: 10px;
+    position: inherit;
+  /*margin:0 auto;
   width:400px;
-	 /*background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;*/
+	 background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;*/
 	 /*overflow: hidden;*/
    /*height: 34px;*/
    /*width: 240px;*/
@@ -116,25 +173,92 @@
 .lang-select label {
   color:#fff;
   margin-left:20px;
+    font-size: 0.8em;
 }
 .lang-select select#locale-selector {
 	 /*-webkit-appearance: none;*/
    /*-moz-appearance: none;*/
    /*appearance: none;*/
    /*background: transparent;*/
-   /*background: #000;*/
+   background: rgb(0, 0, 0);
    /*background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;*/
-   display:block;
    margin:10px auto 10px auto;
    border: none;
-   height: 34px;
+   /*height: 34px;*/
    padding: 5px; /* If you add too much padding here, the options won't show in IE */
-   width: 268px;
-	 color: #000;
-	 border: 1px solid #ccc;
-	 font-size: 16px;
+   /*width: 144px;*/
+    color: rgba(255, 255, 255, 0.5);
+	/* border: 1px solid #ccc;*/
+	 font-size: 12px;
 }
 
 .lang-select select::-ms-expand {
     display: none; /* hide the default arrow in ie10 and ie11 */
+}
+
+
+
+.submit {
+  background: #e7572c;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 3px;        
+  font-weight: bold;
+  text-transform: uppercase;    
+  margin: 0;	
+	text-shadow: 0px 1px 1px darken(#e7572c, 10%);
+	transition: all 0.3s linear; 
+        top: 30%;
+    position: absolute;
+
+}
+
+.submit:hover {
+    background: #5c4c7c;
+}
+
+.details {
+    border-right: 1px solid #b3b4b8;
+    width: 80%;
+    height: auto;
+}
+
+@media (min-width:320px) and (max-width:370px) { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ 
+    .form {padding-bottom: 10px;width: 330px;}
+    .content {padding:0;}
+    .details {border-right:none;}
+    .input-group {width: auto;}
+    .submit {position: relative;left: 0;}
+    h2 {font-size: 22px;padding: 20px 20px 5px 20px;}
+    .information {padding: 0 20px 8px 20px;}
+    .lang-select{position: absolute;margin: auto;right: 0;bottom: 0;left: 0;width: 300px;border-radius: 3px;}
+    .lang-select label {padding-right: 5px;}
+}
+
+@media (min-width:370px) and (max-width:420px) {
+        .input-group {width: 290px;}
+}
+
+@media (min-width:420px) and (max-width:460px) {
+        .input-group {width: 290px;}
+}
+
+@media (min-width:460px) and (max-width:500px) {
+        .input-group {width: 360px;}
+}
+
+@media (min-width:500px) and (max-width:620px) {
+        .input-group {width: 400px;}
+}
+
+
+@media (max-width:620px)  { /* smartphones, Android phones, landscape iPhone */ 
+    .details {border-right:none;}
+    .submit {position: relative;left: 0;}
+}
+
+@media (max-width:780px)  { /* smartphones, Android phones, landscape iPhone */ 
+    .lang-select{position: absolute;margin: auto;right: 0;bottom: 0;left: 0;width: 300px;border-radius: 3px;}
+    .lang-select label {padding-right: 5px;}
 }
