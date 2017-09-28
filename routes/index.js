@@ -36,6 +36,7 @@ module.exports = function(accounts) {
     , locales       = [
       {code: "en", name: "English"},
       {code: "cs", name: "Czech"},
+      {code: "du", name: "Dutch"},
       {code: "de", name: "German"},
       {code: "es", name: "Spanish"},
       {code: "fr", name: "French"},

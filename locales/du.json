@@ -1,0 +1,7 @@
+{
+  "HEADER": "Voer je mail hieronder in om lid te worden op onze Slack",
+  "SELECT_COMMUNITY": "Selecteer de gemeenschap:",
+  "ENTER_EMAIL": "Voer je mailadres in",
+  "ENTER_TOKEN": "Voer de invite token in die je ontvangen hebt",
+  "TITLE": "Wordt lid van de %s gemeenschap op Slack!"
+}
